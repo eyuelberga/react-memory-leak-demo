@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Home from "./HomeNoLeak";
+import About from "./About";
 
 function App() {
+  const [isHome, setIsHome] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <header>
+        <button
+          onClick={() => {
+            setIsHome(!isHome);
+          }}
         >
-          Learn React
-        </a>
+          {isHome ? "About Page" : "Home Page"}
+        </button>
       </header>
+      {isHome ? <Home /> : <About />}
     </div>
   );
 }
